@@ -2,6 +2,8 @@ package cat.itacademy.barcelonactiva.fedoraeva.anna5.s05.t02.n01.S05T02N01Fedora
 
 import java.util.ArrayList;
 
+
+
 import java.util.Comparator;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
@@ -128,12 +130,12 @@ public class UserServiceImpl implements UserService {
 	// java8:
 	public List<AvSuccesRate> listRate() {
 		List<User> allUsers = userRepo.findAll();
-		List<AvSuccesRate> listRate = allUsers.stream().filter(user -> user.getGames().size() > 0).map(temp -> {
-			AvSuccesRate obj = new AvSuccesRate();
-			obj.setId(temp.getId());
-			obj.setUsername(temp.getUsername());
-			obj.setRate(getPlayerAvSucRate(temp));
-			return obj;
+		List<AvSuccesRate> listRate = allUsers.stream().filter(user -> user.getGames().size() > 0).map(u -> {
+			AvSuccesRate uRate = new AvSuccesRate();
+			uRate.setId(u.getId());
+			uRate.setUsername(u.getUsername());
+			uRate.setRate(getPlayerAvSucRate(u));
+			return uRate;
 		}).collect(Collectors.toList());
 		return listRate;
 	}
